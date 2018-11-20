@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
-    ArrayList players = new ArrayList();
+	private final String ANSWER_WAS_CORRECT = "Answer was correct!!!!";
+	private final String ANSWER_WAS_CORRENT = "Answer was corrent!!!!";
+
+	ArrayList players = new ArrayList();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
@@ -16,8 +19,8 @@ public class Game {
     
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
-    
-    public  Game(){
+
+	public  Game(){
     	for (int i = 0; i < 50; i++) {
 			popQuestions.addLast("Pop Question " + i);
 			scienceQuestions.addLast(("Science Question " + i));
@@ -115,33 +118,26 @@ public class Game {
 	public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){
 			if (isGettingOutOfPenaltyBox) {
-				printMessage("Answer was correct!!!!");
-
-				addToCurrentPlayerPurse();
-				printCurrentPlayerPurse();
-
-				boolean winner = didPlayerWin();
-				advancePlayer();
-
-				return winner;
+				return nextTurnWhenAnswerIsCorrect(ANSWER_WAS_CORRECT);
 			} else {
 				advancePlayer();
 				return true;
 			}
-			
-			
-			
 		} else {
-		
-			printMessage("Answer was corrent!!!!");
-			addToCurrentPlayerPurse();
-			printCurrentPlayerPurse();
-
-			boolean winner = didPlayerWin();
-			advancePlayer();
-
-			return winner;
+			return nextTurnWhenAnswerIsCorrect(ANSWER_WAS_CORRENT);
 		}
+	}
+
+	private boolean nextTurnWhenAnswerIsCorrect(String answer_was_correct) {
+		printMessage(answer_was_correct);
+
+		addToCurrentPlayerPurse();
+		printCurrentPlayerPurse();
+
+		boolean winner = didPlayerWin();
+		advancePlayer();
+
+		return winner;
 	}
 
 	private void printMessage(String s) {
