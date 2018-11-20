@@ -59,14 +59,14 @@ public class Game {
 		printMessage("They have rolled a " + roll);
 		
 		if (inPenaltyBox[currentPlayer]) {
-			if (roll % 2 != 0) {
+			if (isOdd(roll)) {
 				isGettingOutOfPenaltyBox = true;
 				
 				printMessage(players.get(currentPlayer) + " is getting out of the penalty box");
 				places[currentPlayer] = places[currentPlayer] + roll;
 				if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 				
-				System.out.println(players.get(currentPlayer) 
+				System.out.println(players.get(currentPlayer)
 						+ "'s new location is " 
 						+ places[currentPlayer]);
 				printMessage("The category is " + currentCategory());
@@ -87,7 +87,10 @@ public class Game {
 			printMessage("The category is " + currentCategory());
 			askQuestion();
 		}
-		
+	}
+
+	private boolean isOdd(int roll) {
+		return roll % 2 != 0;
 	}
 
 	private void askQuestion() {
@@ -163,10 +166,15 @@ public class Game {
 	public boolean wrongAnswer(){
 		printMessage("Question was incorrectly answered");
 		printMessage(players.get(currentPlayer)+ " was sent to the penalty box");
-		inPenaltyBox[currentPlayer] = true;
+
+		putCurrentPlayerInPenaltyBox();
 
 		advancePlayer();
 		return true;
+	}
+
+	private void putCurrentPlayerInPenaltyBox() {
+		inPenaltyBox[currentPlayer] = true;
 	}
 
 
