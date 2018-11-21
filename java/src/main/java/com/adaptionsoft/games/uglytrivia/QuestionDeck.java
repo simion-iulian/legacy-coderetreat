@@ -1,51 +1,44 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import static java.util.Arrays.asList;
 
 public class QuestionDeck {
-    LinkedList<String> popQuestions = new LinkedList();
-    List<Integer> popPlaces = asList(0, 4, 8);
-
-    LinkedList<String> scienceQuestions = new LinkedList();
-    List<Integer> sciencePlaces = asList(1, 5, 9);
-
-    LinkedList<String> sportsQuestions = new LinkedList();
-    List<Integer> sportsPlaces = asList(2, 6, 10);
-
-    LinkedList<String> rockQuestions = new LinkedList();
-    List<Integer> rockPlaces = asList(3, 7, 11);
-    final Category popCategory;
+    private final Category science;
+    private final Category sports;
+    private final Category rock;
+    private final Category pop;
 
     public QuestionDeck() {
-        popCategory = new Category("Pop", asList(0, 4, 8));
+        pop = new Category("Pop", asList(0, 4, 8));
+        science = new Category("Science", asList(1, 5, 9));
+        sports = new Category("Sports", asList(2, 6, 10));
+        rock = new Category("Rock", asList(3, 7, 11));
     }
 
     String currentCategoryForPosition(int position) {
-        if (popCategory.isPlacedOn(position)) return popCategory.name();
-        if (sciencePlaces.contains(position)) return "Science";
-        if (sportsPlaces.contains(position)) return "Sports";
-        if (rockPlaces.contains(position)) return "Rock";
+        if (pop.isPlacedOn(position)) return pop.name();
+        if (science.isPlacedOn(position)) return science.name();
+        if (sports.isPlacedOn(position)) return sports.name();
+        if (rock.isPlacedOn(position)) return rock.name();
         return "Rock";
     }
 
     String askQuestionFor(String category) {
         String question = "";
 
-        if(popCategory.isNamed(category)){
-           question = popCategory.nextQuestion();
+        if(pop.isNamed(category)){
+           question = pop.nextQuestion();
         }
-        if (category.equals("Science")) {
-            question = this.scienceQuestions.removeFirst();
+        if(science.isNamed(category)){
+           question = science.nextQuestion();
         }
-        if (category.equals("Sports")) {
-            question = this.sportsQuestions.removeFirst();
+        if(sports.isNamed(category)){
+           question = sports.nextQuestion();
         }
-        if (category.equals("Rock")) {
-            question = this.rockQuestions.removeFirst();
+        if(rock.isNamed(category)){
+           question = rock.nextQuestion();
         }
+
         return question;
     }
 
@@ -55,10 +48,10 @@ public class QuestionDeck {
 
     public void fillQuestion() {
         for (int i = 0; i < 50; i++) {
-            popCategory.addQuestion(createQuestion("Pop", i));
-            this.scienceQuestions.addLast(createQuestion("Science", i));
-            this.sportsQuestions.addLast(createQuestion("Sports", i));
-            this.rockQuestions.addLast(createQuestion("Rock", i));
+            pop.addQuestion(createQuestion("Pop", i));
+            science.addQuestion(createQuestion("Science", i));
+            sports.addQuestion(createQuestion("Sports", i));
+            rock.addQuestion(createQuestion("Rock", i));
         }
     }
 }
