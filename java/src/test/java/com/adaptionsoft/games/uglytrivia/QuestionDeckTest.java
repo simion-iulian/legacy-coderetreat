@@ -30,9 +30,8 @@ class QuestionDeckTest {
     @ParameterizedTest
     @ValueSource(ints = {12, 32832932, Integer.MAX_VALUE, Integer.MIN_VALUE})
     void question_out_of_the_board(int position) {
-        String actualCategory = new QuestionDeck().currentCategoryForPosition(position);
 
-        assertThat(actualCategory, is("Rock"));
+        assertThrows(OutOfTheBoard.class, () -> new QuestionDeck().currentCategoryForPosition(position));
     }
 
     @ParameterizedTest
