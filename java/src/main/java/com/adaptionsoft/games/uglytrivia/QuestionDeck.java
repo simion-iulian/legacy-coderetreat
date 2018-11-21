@@ -1,6 +1,13 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import java.util.LinkedList;
+
 public class QuestionDeck {
+    LinkedList popQuestions = new LinkedList();
+    LinkedList scienceQuestions = new LinkedList();
+    LinkedList sportsQuestions = new LinkedList();
+    LinkedList rockQuestions = new LinkedList();
+
     String currentCategoryForPosition(int position) {
         if (position == 0) return "Pop";
         if (position == 4) return "Pop";
@@ -16,13 +23,13 @@ public class QuestionDeck {
 
     void askQuestionFor(String category, Game game) {
         if (category == "Pop")
-            System.out.println(game.popQuestions.removeFirst());
+            System.out.println(this.popQuestions.removeFirst());
         if (category == "Science")
-            System.out.println(game.scienceQuestions.removeFirst());
+            System.out.println(this.scienceQuestions.removeFirst());
         if (category == "Sports")
-            System.out.println(game.sportsQuestions.removeFirst());
+            System.out.println(this.sportsQuestions.removeFirst());
         if (category == "Rock")
-            System.out.println(game.rockQuestions.removeFirst());
+            System.out.println(this.rockQuestions.removeFirst());
     }
 
     public String createRockQuestion(int index){
@@ -31,10 +38,10 @@ public class QuestionDeck {
 
     public void fillQuestion(Game game) {
         for (int i = 0; i < 50; i++) {
-			game.popQuestions.addLast("Pop Question " + i);
-			game.scienceQuestions.addLast(("Science Question " + i));
-			game.sportsQuestions.addLast(("Sports Question " + i));
-			game.rockQuestions.addLast(createRockQuestion(i));
+			this.popQuestions.addLast("Pop Question " + i);
+			this.scienceQuestions.addLast(("Science Question " + i));
+			this.sportsQuestions.addLast(("Sports Question " + i));
+			this.rockQuestions.addLast(createRockQuestion(i));
     	}
     }
 }
