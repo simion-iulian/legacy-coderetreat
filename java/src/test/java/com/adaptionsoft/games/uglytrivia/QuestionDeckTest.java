@@ -55,7 +55,6 @@ class QuestionDeckTest {
     }
 
     @Test
-    @Disabled
     void asking_more_questions_then_available() {
         QuestionDeck questionDeck = new QuestionDeck();
 
