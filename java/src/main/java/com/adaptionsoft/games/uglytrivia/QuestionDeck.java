@@ -3,10 +3,10 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.LinkedList;
 
 public class QuestionDeck {
-    LinkedList popQuestions = new LinkedList();
-    LinkedList scienceQuestions = new LinkedList();
-    LinkedList sportsQuestions = new LinkedList();
-    LinkedList rockQuestions = new LinkedList();
+    LinkedList<String> popQuestions = new LinkedList();
+    LinkedList<String> scienceQuestions = new LinkedList();
+    LinkedList<String> sportsQuestions = new LinkedList();
+    LinkedList<String> rockQuestions = new LinkedList();
 
     String currentCategoryForPosition(int position) {
         if (position == 0) return "Pop";
@@ -21,8 +21,8 @@ public class QuestionDeck {
         return "Rock";
     }
 
-    Object askQuestionFor(String category) {
-        Object question = null;
+    String askQuestionFor(String category) {
+        String question = "";
         if (category == "Pop") {
             question = this.popQuestions.removeFirst();
         }
