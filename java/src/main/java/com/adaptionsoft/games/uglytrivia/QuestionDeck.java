@@ -23,16 +23,16 @@ public class QuestionDeck {
 
     String askQuestionFor(String category) {
         String question = "";
-        if (category == "Pop") {
+        if (category.equals("Pop")) {
             question = this.popQuestions.removeFirst();
         }
-        if (category == "Science") {
+        if (category.equals("Science")) {
             question = this.scienceQuestions.removeFirst();
         }
-        if (category == "Sports") {
+        if (category.equals("Sports")) {
             question = this.sportsQuestions.removeFirst();
         }
-        if (category == "Rock") {
+        if (category.equals("Rock")) {
             question = this.rockQuestions.removeFirst();
         }
         return question;

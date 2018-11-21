@@ -1,6 +1,5 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -33,12 +32,13 @@ class QuestionDeckTest {
         assertThat(actualCategory, is("Rock"));
     }
 
-    @Test
-    void ask_question_for_pop_multiple_times() {
+    @ParameterizedTest
+    @ValueSource(strings = {"Pop"})
+    void ask_question_for_pop_multiple_times(String category) {
         QuestionDeck questionDeck = new QuestionDeck();
 
         questionDeck.fillQuestion();
 
-        IntStream.range(0, 50).forEach(i -> assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question " + i)));
+        IntStream.range(0, 50).forEach(i -> assertThat(questionDeck.askQuestionFor(category), is(category + " Question " + i)));
     }
 }
