@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -28,5 +29,15 @@ class QuestionDeckTest {
         String actualCategory = new QuestionDeck().currentCategoryForPosition(position);
 
         assertThat(actualCategory, is("Rock"));
+    }
+
+    @Test
+    void ask_question_for_pop() {
+        QuestionDeck questionDeck = new QuestionDeck();
+
+        questionDeck.fillQuestion();
+        String actualQuestion = questionDeck.askQuestionFor("Pop");
+
+        assertThat(actualQuestion, is("Pop Question 0"));
     }
 }
