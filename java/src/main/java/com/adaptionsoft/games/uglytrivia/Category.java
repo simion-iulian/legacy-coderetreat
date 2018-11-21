@@ -27,6 +27,10 @@ public class Category {
     }
 
     public String nextQuestion() {
+        if (questions.isEmpty()) {
+            throw new NoRemainingQuestion();
+        }
+
         return questions.removeFirst();
     }
 

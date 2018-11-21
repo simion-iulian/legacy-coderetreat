@@ -6,6 +6,7 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CategoryTest {
@@ -42,6 +43,15 @@ class CategoryTest {
         assertThat(category.nextQuestion(), is(question2));
     }
 
+    @Test
+    void no_more_questions_available() {
+        Category category = new Category("not-needed", emptyList());
+
+        category.addQuestion("a question");
+        category.nextQuestion();
+
+        assertThrows(NoRemainingQuestion.class, category::nextQuestion);
+    }
 
     @Test
     void can_be_named() {
