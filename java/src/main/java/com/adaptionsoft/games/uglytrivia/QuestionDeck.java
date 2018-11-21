@@ -3,6 +3,7 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import static java.util.Arrays.asList;
 
@@ -18,8 +19,14 @@ public class QuestionDeck {
 
     LinkedList<String> rockQuestions = new LinkedList();
     List<Integer> rockPlaces = asList(3, 7, 11);
+    final Category popCategory;
+
+    public QuestionDeck() {
+        popCategory = new Category("Pop", asList(0, 4, 8));
+    }
 
     String currentCategoryForPosition(int position) {
+        if (popCategory.isPlacedOn(position)) return popCategory.name();
         if (popPlaces.contains(position)) return "Pop";
         if (sciencePlaces.contains(position)) return "Science";
         if (sportsPlaces.contains(position)) return "Sports";
