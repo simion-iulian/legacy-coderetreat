@@ -3,6 +3,7 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static java.lang.String.*;
 import static java.util.Arrays.asList;
 
 public class QuestionDeck {
@@ -38,12 +39,8 @@ public class QuestionDeck {
                 .nextQuestion();
     }
 
-    public String createQuestion(final String category, int index) {
-        return category + " Question " + index;
-    }
-
     public void fillQuestion() {
         IntStream.range(0, 50).forEach(i ->
-                categories.forEach(category -> category.addQuestion(createQuestion(category.name(), i))));
+                categories.forEach(category -> category.addQuestion(format("%s Question %d", category.name(), i))));
     }
 }
