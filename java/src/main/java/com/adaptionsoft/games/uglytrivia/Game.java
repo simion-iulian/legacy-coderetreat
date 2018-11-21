@@ -1,11 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
-
-import static java.lang.String.format;
-import static java.util.Arrays.asList;
 
 public class Game {
     ArrayList players = new ArrayList();
@@ -17,17 +12,8 @@ public class Game {
     boolean isGettingOutOfPenaltyBox;
     private final QuestionDeck questionDeck;
 
-    public  Game(){
-        List<Category> categories = asList(
-                new Category("Pop", asList(0, 4, 8)),
-                new Category("Science", asList(1, 5, 9)),
-                new Category("Sports", asList(2, 6, 10)),
-                new Category("Rock", asList(3, 7, 11)));
-
-        IntStream.range(0, 50).forEach(i ->
-                categories.forEach(category -> category.addQuestion(format("%s Question %d", category.name(), i))));
-
-        questionDeck = new QuestionDeck(categories);
+    public Game(QuestionDeck aQuestionDeck){
+        questionDeck = aQuestionDeck;
     }
 
     public boolean isPlayable() {
