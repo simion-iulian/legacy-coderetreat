@@ -11,17 +11,19 @@ public class QuestionDeck {
     List<Integer> popPlaces = asList(0, 4, 8);
 
     LinkedList<String> scienceQuestions = new LinkedList();
+    List<Integer> sciencePlaces = asList(1, 5, 9);
+
     LinkedList<String> sportsQuestions = new LinkedList();
+    List<Integer> sportsPlaces = asList(2, 6, 10);
+
     LinkedList<String> rockQuestions = new LinkedList();
+    List<Integer> rockPlaces = asList(3, 7, 11);
 
     String currentCategoryForPosition(int position) {
         if (popPlaces.contains(position)) return "Pop";
-        if (position == 1) return "Science";
-        if (position == 5) return "Science";
-        if (position == 9) return "Science";
-        if (position == 2) return "Sports";
-        if (position == 6) return "Sports";
-        if (position == 10) return "Sports";
+        if (sciencePlaces.contains(position)) return "Science";
+        if (sportsPlaces.contains(position)) return "Sports";
+        if (rockPlaces.contains(position)) return "Rock";
         return "Rock";
     }
 
