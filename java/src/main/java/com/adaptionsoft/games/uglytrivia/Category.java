@@ -4,13 +4,15 @@ import java.util.List;
 
 public class Category {
     private final String name;
+    private List<Integer> places;
 
     public Category(String name, List<Integer> places) {
         this.name = name;
+        this.places = places;
     }
 
     public boolean isPlacedOn(int position) {
-        return false;
+        return places.contains(position);
     }
 
     public String name() {
