@@ -32,16 +32,6 @@ class QuestionDeckTest {
     }
 
     @Test
-    void ask_question_for_pop() {
-        QuestionDeck questionDeck = new QuestionDeck();
-
-        questionDeck.fillQuestion();
-        String actualQuestion = questionDeck.askQuestionFor("Pop");
-
-        assertThat(actualQuestion, is("Pop Question 0"));
-    }
-
-    @Test
     void ask_question_for_pop_multiple_times() {
         QuestionDeck questionDeck = new QuestionDeck();
 
