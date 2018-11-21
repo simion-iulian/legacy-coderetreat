@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -15,16 +16,27 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class QuestionDeckTest {
+    private QuestionDeck game;
+
+    @BeforeEach
+    void setUp() {
+        List<Category> categories = asList(
+                new Category("HipHop", asList(0, 1)),
+                new Category("Rocket Science", asList(2, 3)));
+
+        IntStream.range(0, 50).forEach(i ->
+                categories.forEach(category -> category.addQuestion(format("%s Question %d", category.name(), i))));
+
+        game = new QuestionDeck(categories);
+    }
 
     @ParameterizedTest
     @CsvSource({
-            "0, Pop", "4, Pop", "8, Pop",
-            "1, Science", "5, Science", "9, Science",
-            "2, Sports", "6, Sports", "10, Sports",
-            "3, Rock", "7, Rock", "11, Rock",
+            "0, HipHop", "1, HipHop",
+            "2, Rocket Science", "3, Rocket Science"
     })
     void question_for_categories_placed_explicitly(int position, String expectedCategory) {
-        String actualCategory = createAGame().currentCategoryForPosition(position);
+        String actualCategory = game.currentCategoryForPosition(position);
 
         assertThat(actualCategory, is(expectedCategory));
     }
@@ -33,43 +45,31 @@ class QuestionDeckTest {
     @ValueSource(ints = {12, 32832932, Integer.MAX_VALUE, Integer.MIN_VALUE})
     void question_out_of_the_board(int position) {
 
-        assertThrows(OutOfTheBoard.class, () -> createAGame().currentCategoryForPosition(position));
+        assertThrows(OutOfTheBoard.class, () -> game.currentCategoryForPosition(position));
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Pop", "Science", "Sports", "Rock"})
+    @ValueSource(strings = {"HipHop", "Rocket Science"})
     void ask_question_for_pop_multiple_times(String category) {
-        QuestionDeck questionDeck = createAGame();
+        QuestionDeck questionDeck = game;
 
         IntStream.range(0, 50).forEach(i -> assertThat(questionDeck.askQuestionFor(category), is(category + " Question " + i)));
     }
 
     @Test
     void ask_question_for_an_unknown_category() {
-        QuestionDeck questionDeck = createAGame();
+        QuestionDeck questionDeck = game;
 
         assertThrows(NoSuchCategory.class, () -> questionDeck.askQuestionFor("::unknown-category::"));
     }
 
     @Test
     void asking_more_questions_then_available() {
-        QuestionDeck questionDeck = createAGame();
+        QuestionDeck questionDeck = game;
 
-        IntStream.range(0, 50).forEach(i -> questionDeck.askQuestionFor("Pop"));
+        IntStream.range(0, 50).forEach(i -> questionDeck.askQuestionFor("HipHop"));
 
-        assertThrows(NoRemainingQuestion.class, () -> questionDeck.askQuestionFor("Pop"));
+        assertThrows(NoRemainingQuestion.class, () -> questionDeck.askQuestionFor("HipHop"));
     }
 
-    private QuestionDeck createAGame() {
-        List<Category> categories = asList(
-                new Category("Pop", asList(0, 4, 8)),
-                new Category("Science", asList(1, 5, 9)),
-                new Category("Sports", asList(2, 6, 10)),
-                new Category("Rock", asList(3, 7, 11)));
-
-        IntStream.range(0, 50).forEach(i ->
-                categories.forEach(category -> category.addQuestion(format("%s Question %d", category.name(), i))));
-
-        return new QuestionDeck(categories);
-    }
 }
