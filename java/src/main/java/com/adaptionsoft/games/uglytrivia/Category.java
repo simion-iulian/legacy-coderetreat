@@ -27,7 +27,7 @@ public class Category {
     }
 
     public String nextQuestion() {
-        return questions.getFirst();
+        return questions.removeFirst();
     }
 
     public void addQuestion(String question) {

@@ -19,7 +19,7 @@ class CategoryTest {
     }
 
     @Test
-    void next_question() {
+    void ask_for_a_single_question() {
         Category category = new Category("banana", emptyList());
 
         String question = "Isn't this a great question?";
@@ -27,6 +27,21 @@ class CategoryTest {
 
         assertThat(category.nextQuestion(),is(question));
     }
+
+    @Test
+    void ask_for_a_multiple_question() {
+        Category category = new Category("banana", emptyList());
+
+        String question1 = "Isn't this a great question?";
+        String question2 = "Isn't this another great question?";
+
+        category.addQuestion(question1);
+        category.addQuestion(question2);
+
+        assertThat(category.nextQuestion(), is(question1));
+        assertThat(category.nextQuestion(), is(question2));
+    }
+
 
     @Test
     void can_be_named() {
