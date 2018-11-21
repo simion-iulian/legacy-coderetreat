@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,6 +9,7 @@ import java.util.stream.IntStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.isEmptyString;
 
 class QuestionDeckTest {
 
@@ -40,5 +42,15 @@ class QuestionDeckTest {
         questionDeck.fillQuestion();
 
         IntStream.range(0, 50).forEach(i -> assertThat(questionDeck.askQuestionFor(category), is(category + " Question " + i)));
+    }
+
+    @Test
+    void ask_question_for_an_unknown_category() {
+        QuestionDeck questionDeck = new QuestionDeck();
+
+        questionDeck.fillQuestion();
+        String category = questionDeck.askQuestionFor("::unknown-category::");
+
+        assertThat(category, isEmptyString());
     }
 }
