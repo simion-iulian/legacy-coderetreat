@@ -26,7 +26,7 @@ public class GameRunner {
 				new Category("Pop", asList(0, 4, 8)),
 				new Category("Science", asList(1, 5, 9)),
 				new Category("Sports", asList(2, 6, 10)),
-				new Category("Rock", asList(3, 7, 11)));
+				new Category("History", asList(3, 7, 11)));
 
 		IntStream.range(0, 50).forEach(i ->
 				categories.forEach(category -> category.addQuestion(format("%s Question %d", category.name(), i))));
