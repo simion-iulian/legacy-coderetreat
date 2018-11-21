@@ -5,11 +5,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isEmptyString;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class QuestionDeckTest {
 
@@ -52,5 +55,15 @@ class QuestionDeckTest {
         String category = questionDeck.askQuestionFor("::unknown-category::");
 
         assertThat(category, isEmptyString());
+    }
+
+    @Test
+    void asking_more_questions_then_available() {
+        QuestionDeck questionDeck = new QuestionDeck();
+
+        questionDeck.fillQuestion();
+        IntStream.range(0, 50).forEach(i -> questionDeck.askQuestionFor("Pop"));
+
+        assertThrows(NoSuchElementException.class, () -> questionDeck.askQuestionFor("Pop"));
     }
 }
