@@ -25,7 +25,6 @@ public class QuestionDeck {
 
     String currentCategoryForPosition(int position) {
         if (popCategory.isPlacedOn(position)) return popCategory.name();
-        if (popPlaces.contains(position)) return "Pop";
         if (sciencePlaces.contains(position)) return "Science";
         if (sportsPlaces.contains(position)) return "Sports";
         if (rockPlaces.contains(position)) return "Rock";
@@ -37,9 +36,6 @@ public class QuestionDeck {
 
         if(popCategory.isNamed(category)){
            question = popCategory.nextQuestion();
-        }
-        if (category.equals("Pop")) {
-            question = this.popQuestions.removeFirst();
         }
         if (category.equals("Science")) {
             question = this.scienceQuestions.removeFirst();
@@ -60,7 +56,6 @@ public class QuestionDeck {
     public void fillQuestion() {
         for (int i = 0; i < 50; i++) {
             popCategory.addQuestion(createQuestion("Pop", i));
-            this.popQuestions.addLast(createQuestion("Pop", i));
             this.scienceQuestions.addLast(createQuestion("Science", i));
             this.sportsQuestions.addLast(createQuestion("Sports", i));
             this.rockQuestions.addLast(createQuestion("Rock", i));
