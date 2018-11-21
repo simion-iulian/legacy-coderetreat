@@ -3,23 +3,12 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
-
-import static java.lang.String.*;
-import static java.util.Arrays.asList;
 
 public class QuestionDeck {
     private final List<Category> categories;
 
-    public QuestionDeck() {
-        categories = asList(
-                new Category("Pop", asList(0, 4, 8)),
-                new Category("Science", asList(1, 5, 9)),
-                new Category("Sports", asList(2, 6, 10)),
-                new Category("Rock", asList(3, 7, 11)));
-
-        IntStream.range(0, 50).forEach(i ->
-                categories.forEach(category -> category.addQuestion(format("%s Question %d", category.name(), i))));
+    public QuestionDeck(List<Category> categories) {
+        this.categories = categories;
     }
 
     String currentCategoryForPosition(int position) {
