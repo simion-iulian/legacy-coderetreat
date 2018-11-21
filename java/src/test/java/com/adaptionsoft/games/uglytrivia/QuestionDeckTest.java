@@ -33,7 +33,7 @@ class QuestionDeckTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Pop"})
+    @ValueSource(strings = {"Pop", "Science", "Sports", "Rock"})
     void ask_question_for_pop_multiple_times(String category) {
         QuestionDeck questionDeck = new QuestionDeck();
 
