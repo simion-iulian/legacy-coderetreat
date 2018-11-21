@@ -13,4 +13,15 @@ public class QuestionDeck {
         if (position == 10) return "Sports";
         return "Rock";
     }
+
+    void askQuestionFor(String category, Game game) {
+        if (category == "Pop")
+            System.out.println(game.popQuestions.removeFirst());
+        if (category == "Science")
+            System.out.println(game.scienceQuestions.removeFirst());
+        if (category == "Sports")
+            System.out.println(game.sportsQuestions.removeFirst());
+        if (category == "Rock")
+            System.out.println(game.rockQuestions.removeFirst());
+    }
 }
