@@ -13,9 +13,8 @@ public class Game {
     private final QuestionDeck questionDeck;
 
     public  Game(){
-        questionDeck = new QuestionDeck();
 
-        questionDeck.fillQuestion();
+        questionDeck = new QuestionDeck();
     }
 
     public boolean isPlayable() {

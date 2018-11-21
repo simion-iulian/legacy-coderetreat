@@ -38,16 +38,12 @@ class QuestionDeckTest {
     void ask_question_for_pop_multiple_times(String category) {
         QuestionDeck questionDeck = new QuestionDeck();
 
-        questionDeck.fillQuestion();
-
         IntStream.range(0, 50).forEach(i -> assertThat(questionDeck.askQuestionFor(category), is(category + " Question " + i)));
     }
 
     @Test
     void ask_question_for_an_unknown_category() {
         QuestionDeck questionDeck = new QuestionDeck();
-
-        questionDeck.fillQuestion();
 
         assertThrows(NoSuchCategory.class, () -> questionDeck.askQuestionFor("::unknown-category::"));
     }
@@ -56,7 +52,6 @@ class QuestionDeckTest {
     void asking_more_questions_then_available() {
         QuestionDeck questionDeck = new QuestionDeck();
 
-        questionDeck.fillQuestion();
         IntStream.range(0, 50).forEach(i -> questionDeck.askQuestionFor("Pop"));
 
         assertThrows(NoRemainingQuestion.class, () -> questionDeck.askQuestionFor("Pop"));
