@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -27,9 +28,7 @@ public class GoldenMasterSpike {
 
             System.setOut(printStream);
 
-            for (int i = 0; i < 1000; i++) {
-                new GameRunner().run(new Random(i));
-            }
+            IntStream.range(0, 1000).forEach( i -> new GameRunner().run(new Random(i)));
 
             assertThat(Files.readAllLines(output), is(Files.readAllLines(goldenMaster)));
         } finally {
