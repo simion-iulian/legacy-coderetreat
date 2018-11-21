@@ -59,6 +59,7 @@ public class QuestionDeck {
 
     public void fillQuestion() {
         for (int i = 0; i < 50; i++) {
+            popCategory.addQuestion(createQuestion("Pop", i));
             this.popQuestions.addLast(createQuestion("Pop", i));
             this.scienceQuestions.addLast(createQuestion("Science", i));
             this.sportsQuestions.addLast(createQuestion("Sports", i));

@@ -22,4 +22,8 @@ public class Category {
     public String nextQuestion() {
         return "werifnerwoifuhi";
     }
+
+    public void addQuestion(String question) {
+
+    }
 }
