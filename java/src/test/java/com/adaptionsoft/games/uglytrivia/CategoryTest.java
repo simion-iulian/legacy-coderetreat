@@ -19,6 +19,16 @@ class CategoryTest {
     }
 
     @Test
+    void next_question() {
+        Category category = new Category("banana", emptyList());
+
+        String question = "Isn't this a great question?";
+        category.addQuestion(question);
+
+        assertThat(category.nextQuestion(),is(question));
+    }
+
+    @Test
     void can_be_named() {
         Category pop = new Category("banana", emptyList());
 
