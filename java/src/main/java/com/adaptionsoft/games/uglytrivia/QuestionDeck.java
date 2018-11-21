@@ -24,22 +24,19 @@ public class QuestionDeck {
     }
 
     String askQuestionFor(String category) {
-        String question = "";
-
         if(pop.isNamed(category)){
-           question = pop.nextQuestion();
+           return pop.nextQuestion();
         }
         if(science.isNamed(category)){
-           question = science.nextQuestion();
+           return science.nextQuestion();
         }
         if(sports.isNamed(category)){
-           question = sports.nextQuestion();
+           return sports.nextQuestion();
         }
         if(rock.isNamed(category)){
-           question = rock.nextQuestion();
+            return rock.nextQuestion();
         }
-
-        return question;
+        throw new NoSuchCategory();
     }
 
     public String createQuestion(final String category, int index) {
