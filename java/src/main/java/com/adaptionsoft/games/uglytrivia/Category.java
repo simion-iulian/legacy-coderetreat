@@ -14,4 +14,12 @@ public class Category {
     public String name() {
         return null;
     }
+
+    public boolean isNamed(String category) {
+        return false;
+    }
+
+    public String nextQuestion() {
+        return "werifnerwoifuhi";
+    }
 }

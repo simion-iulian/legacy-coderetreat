@@ -36,6 +36,10 @@ public class QuestionDeck {
 
     String askQuestionFor(String category) {
         String question = "";
+        
+        if(popCategory.isNamed(category)){
+           question = popCategory.nextQuestion();
+        }
         if (category.equals("Pop")) {
             question = this.popQuestions.removeFirst();
         }
