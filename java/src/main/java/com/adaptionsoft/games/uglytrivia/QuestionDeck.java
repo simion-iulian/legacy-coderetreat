@@ -21,27 +21,33 @@ public class QuestionDeck {
         return "Rock";
     }
 
-    void askQuestionFor(String category) {
-        if (category == "Pop")
-            System.out.println(this.popQuestions.removeFirst());
-        if (category == "Science")
-            System.out.println(this.scienceQuestions.removeFirst());
-        if (category == "Sports")
-            System.out.println(this.sportsQuestions.removeFirst());
-        if (category == "Rock")
-            System.out.println(this.rockQuestions.removeFirst());
+    Object askQuestionFor(String category) {
+        Object question = null;
+        if (category == "Pop") {
+            question = this.popQuestions.removeFirst();
+        }
+        if (category == "Science") {
+            question = this.scienceQuestions.removeFirst();
+        }
+        if (category == "Sports") {
+            question = this.sportsQuestions.removeFirst();
+        }
+        if (category == "Rock") {
+            question = this.rockQuestions.removeFirst();
+        }
+        return question;
     }
 
-    public String createRockQuestion(int index){
-		return "Rock Question " + index;
-	}
+    public String createRockQuestion(int index) {
+        return "Rock Question " + index;
+    }
 
     public void fillQuestion() {
         for (int i = 0; i < 50; i++) {
-			this.popQuestions.addLast("Pop Question " + i);
-			this.scienceQuestions.addLast(("Science Question " + i));
-			this.sportsQuestions.addLast(("Sports Question " + i));
-			this.rockQuestions.addLast(createRockQuestion(i));
-    	}
+            this.popQuestions.addLast("Pop Question " + i);
+            this.scienceQuestions.addLast(("Science Question " + i));
+            this.sportsQuestions.addLast(("Sports Question " + i));
+            this.rockQuestions.addLast(createRockQuestion(i));
+        }
     }
 }
