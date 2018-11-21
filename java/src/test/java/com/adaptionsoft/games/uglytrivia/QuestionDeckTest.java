@@ -5,6 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.stream.IntStream;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -37,13 +39,6 @@ class QuestionDeckTest {
 
         questionDeck.fillQuestion();
 
-        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 0"));
-        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 1"));
-        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 2"));
-        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 3"));
-        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 4"));
-        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 5"));
-        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 6"));
-        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 7"));
+        IntStream.range(0, 50).forEach(i -> assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question " + i)));
     }
 }
