@@ -20,6 +20,7 @@ public class QuestionDeck {
         if (science.isPlacedOn(position)) return science.name();
         if (sports.isPlacedOn(position)) return sports.name();
         if (rock.isPlacedOn(position)) return rock.name();
+
         throw new OutOfTheBoard();
     }
 

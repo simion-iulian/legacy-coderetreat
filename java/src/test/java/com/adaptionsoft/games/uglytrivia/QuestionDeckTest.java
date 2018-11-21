@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -54,12 +55,13 @@ class QuestionDeckTest {
     }
 
     @Test
+    @Disabled
     void asking_more_questions_then_available() {
         QuestionDeck questionDeck = new QuestionDeck();
 
         questionDeck.fillQuestion();
         IntStream.range(0, 50).forEach(i -> questionDeck.askQuestionFor("Pop"));
 
-        assertThrows(NoSuchElementException.class, () -> questionDeck.askQuestionFor("Pop"));
+        assertThrows(NoRemainingQuestion.class, () -> questionDeck.askQuestionFor("Pop"));
     }
 }
