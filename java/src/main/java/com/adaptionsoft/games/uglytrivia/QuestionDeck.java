@@ -1,17 +1,21 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class QuestionDeck {
     LinkedList<String> popQuestions = new LinkedList();
+    List<Integer> popPlaces = asList(0, 4, 8);
+
     LinkedList<String> scienceQuestions = new LinkedList();
     LinkedList<String> sportsQuestions = new LinkedList();
     LinkedList<String> rockQuestions = new LinkedList();
 
     String currentCategoryForPosition(int position) {
-        if (position == 0) return "Pop";
-        if (position == 4) return "Pop";
-        if (position == 8) return "Pop";
+        if (popPlaces.contains(position)) return "Pop";
         if (position == 1) return "Science";
         if (position == 5) return "Science";
         if (position == 9) return "Science";
