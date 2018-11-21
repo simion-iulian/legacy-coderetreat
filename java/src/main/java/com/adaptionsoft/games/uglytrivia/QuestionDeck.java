@@ -28,20 +28,13 @@ public class QuestionDeck {
                 .name();
     }
 
-    String askQuestionFor(String category) {
-        if(pop.isNamed(category)){
-           return pop.nextQuestion();
-        }
-        if(science.isNamed(category)){
-           return science.nextQuestion();
-        }
-        if(sports.isNamed(category)){
-           return sports.nextQuestion();
-        }
-        if(rock.isNamed(category)){
-            return rock.nextQuestion();
-        }
-        throw new NoSuchCategory();
+    String askQuestionFor(String categoryName) {
+        return categories
+                .stream()
+                .filter(category -> category.isNamed(categoryName))
+                .findFirst()
+                .orElseThrow(NoSuchCategory::new)
+                .nextQuestion();
     }
 
     public String createQuestion(final String category, int index) {
