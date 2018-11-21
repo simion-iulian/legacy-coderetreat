@@ -1,16 +1,18 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 class QuestionDeckTest {
 
-    @Test
-    void pop_category() {
-        String actual = new QuestionDeck().currentCategoryForPosition(0);
+    @ParameterizedTest
+    @CsvSource({"0, Pop"})
+    void pop_category(int position, String category) {
+        String actual = new QuestionDeck().currentCategoryForPosition(position);
 
-        assertThat(actual, is("Pop"));
+        assertThat(actual, is(category));
     }
 }
