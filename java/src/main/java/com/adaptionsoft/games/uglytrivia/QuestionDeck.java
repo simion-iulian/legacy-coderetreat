@@ -21,7 +21,7 @@ public class QuestionDeck {
         return "Rock";
     }
 
-    void askQuestionFor(String category, Game game) {
+    void askQuestionFor(String category) {
         if (category == "Pop")
             System.out.println(this.popQuestions.removeFirst());
         if (category == "Science")
@@ -36,7 +36,7 @@ public class QuestionDeck {
 		return "Rock Question " + index;
 	}
 
-    public void fillQuestion(Game game) {
+    public void fillQuestion() {
         for (int i = 0; i < 50; i++) {
 			this.popQuestions.addLast("Pop Question " + i);
 			this.scienceQuestions.addLast(("Science Question " + i));

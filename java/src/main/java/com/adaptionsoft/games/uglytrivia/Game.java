@@ -15,7 +15,7 @@ public class Game {
     public  Game(){
         questionDeck = new QuestionDeck();
 
-        questionDeck.fillQuestion(this);
+        questionDeck.fillQuestion();
     }
 
     public boolean isPlayable() {
@@ -76,7 +76,7 @@ public class Game {
 	}
 
 	private void askQuestion() {
-        questionDeck.askQuestionFor(currentCategory(), this);
+        questionDeck.askQuestionFor(currentCategory());
     }
 
 
