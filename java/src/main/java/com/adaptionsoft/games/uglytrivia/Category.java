@@ -3,8 +3,10 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.List;
 
 public class Category {
-    public Category(String name, List<Integer> places) {
+    private final String name;
 
+    public Category(String name, List<Integer> places) {
+        this.name = name;
     }
 
     public boolean isPlacedOn(int position) {
@@ -12,11 +14,11 @@ public class Category {
     }
 
     public String name() {
-        return null;
+        return name;
     }
 
     public boolean isNamed(String category) {
-        return false;
+        return category.equals(name);
     }
 
     public String nextQuestion() {
