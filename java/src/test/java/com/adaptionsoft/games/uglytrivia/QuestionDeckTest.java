@@ -40,4 +40,20 @@ class QuestionDeckTest {
 
         assertThat(actualQuestion, is("Pop Question 0"));
     }
+
+    @Test
+    void ask_question_for_pop_multiple_times() {
+        QuestionDeck questionDeck = new QuestionDeck();
+
+        questionDeck.fillQuestion();
+
+        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 0"));
+        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 1"));
+        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 2"));
+        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 3"));
+        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 4"));
+        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 5"));
+        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 6"));
+        assertThat(questionDeck.askQuestionFor("Pop"), is("Pop Question 7"));
+    }
 }
