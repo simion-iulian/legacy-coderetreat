@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 class QuestionDeckTest {
 
     @ParameterizedTest
-    @CsvSource({"0, Pop"})
+    @CsvSource({"0, Pop", "4, Pop", "8, Pop"})
     void pop_category(int position, String category) {
         String actual = new QuestionDeck().currentCategoryForPosition(position);
 
