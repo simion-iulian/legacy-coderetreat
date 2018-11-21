@@ -1,9 +1,7 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 
 import static java.util.Arrays.asList;
 
@@ -36,7 +34,7 @@ public class QuestionDeck {
 
     String askQuestionFor(String category) {
         String question = "";
-        
+
         if(popCategory.isNamed(category)){
            question = popCategory.nextQuestion();
         }
@@ -55,16 +53,16 @@ public class QuestionDeck {
         return question;
     }
 
-    public String createRockQuestion(int index) {
-        return "Rock Question " + index;
+    public String createQuestion(final String category, int index) {
+        return category + " Question " + index;
     }
 
     public void fillQuestion() {
         for (int i = 0; i < 50; i++) {
-            this.popQuestions.addLast("Pop Question " + i);
-            this.scienceQuestions.addLast(("Science Question " + i));
-            this.sportsQuestions.addLast(("Sports Question " + i));
-            this.rockQuestions.addLast(createRockQuestion(i));
+            this.popQuestions.addLast(createQuestion("Pop", i));
+            this.scienceQuestions.addLast(createQuestion("Science", i));
+            this.sportsQuestions.addLast(createQuestion("Sports", i));
+            this.rockQuestions.addLast(createQuestion("Rock", i));
         }
     }
 }
