@@ -16,18 +16,20 @@ import static org.hamcrest.Matchers.is;
 
 public class GoldenMasterSpike {
 
-	@Test
-	public void run() throws IOException {
+    @Test
+    public void run() throws IOException {
         Path output = Paths.get("output.log");
         Path goldenMaster = Paths.get("golden-master.log");
 
         PrintStream originalOut = System.out;
 
-        try (PrintStream printStream = new PrintStream(output.toFile())){
+        try (PrintStream printStream = new PrintStream(output.toFile())) {
 
             System.setOut(printStream);
 
-            new GameRunner().run(new Random(1));
+            for (int i = 0; i < 1000; i++) {
+                new GameRunner().run(new Random(i));
+            }
 
             assertThat(Files.readAllLines(output), is(Files.readAllLines(goldenMaster)));
         } finally {
