@@ -20,19 +20,10 @@ public class Game {
 
     public  Game(){
         questionDeck = new QuestionDeck();
-        for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
-    	}
+        questionDeck.fillQuestion(this);
     }
 
-	public String createRockQuestion(int index){
-		return "Rock Question " + index;
-	}
-	
-	public boolean isPlayable() {
+    public boolean isPlayable() {
 		return (howManyPlayers() >= 2);
 	}
 
