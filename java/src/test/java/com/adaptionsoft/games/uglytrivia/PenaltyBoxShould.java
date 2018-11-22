@@ -1,9 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
-
-import java.util.stream.IntStream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
