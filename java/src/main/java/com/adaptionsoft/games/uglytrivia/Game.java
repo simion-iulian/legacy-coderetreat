@@ -41,7 +41,7 @@ public class Game {
 		System.out.println("They have rolled a " + roll);
 		
 		if (inPenaltyBox[currentPlayer]) {
-		    penaltyBox.containsPlayer(currentPlayer);
+            penaltyBox.containsPlayer(currentPlayer);
 
             final boolean oddNumberedRoll = (roll % 2 != 0);
             isGettingOutOfPenaltyBox = oddNumberedRoll;
@@ -143,7 +143,8 @@ public class Game {
 		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
 		penaltyBox.putPlayer(currentPlayer);
-		
+
+
 		currentPlayer++;
 		if (currentPlayer == players.size()) currentPlayer = 0;
 		return true;
