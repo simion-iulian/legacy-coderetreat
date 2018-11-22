@@ -15,7 +15,7 @@ import static java.util.Arrays.asList;
 
 public class GameRunner {
 
-	private static boolean notAWinner;
+	private static boolean gameOngoing;
 
 	public static void main(String[] args) {
 		new GameRunner().run(new Random());
@@ -42,14 +42,14 @@ public class GameRunner {
 			aGame.roll(random.nextInt(5) + 1);
 
 			if (random.nextInt(9) == 7) {
-				notAWinner = aGame.wrongAnswer();
+				gameOngoing = aGame.wrongAnswer();
 			} else {
-				notAWinner = aGame.wasCorrectlyAnswered();
+				gameOngoing = aGame.wasCorrectlyAnswered();
 			}
 
 
 
-		} while (notAWinner);
+		} while (gameOngoing);
 	}
 
 }
