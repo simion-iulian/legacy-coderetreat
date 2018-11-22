@@ -11,9 +11,11 @@ public class Game {
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
     private final QuestionDeck questionDeck;
+    private PenaltyBox penaltyBox;
 
     public Game(QuestionDeck aQuestionDeck){
         questionDeck = aQuestionDeck;
+        penaltyBox = new PenaltyBox();
     }
 
     public boolean isPlayable() {
@@ -21,8 +23,6 @@ public class Game {
 	}
 
 	public boolean add(String playerName) {
-		
-		
 	    players.add(playerName);
 	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
@@ -41,6 +41,7 @@ public class Game {
 		System.out.println("They have rolled a " + roll);
 		
 		if (inPenaltyBox[currentPlayer]) {
+		    penaltyBox.containsPlayer(currentPlayer);
 
             final boolean oddNumberedRoll = (roll % 2 != 0);
             isGettingOutOfPenaltyBox = oddNumberedRoll;
@@ -141,6 +142,7 @@ public class Game {
 		System.out.println("Question was incorrectly answered");
 		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
+		penaltyBox.putPlayer(currentPlayer);
 		
 		currentPlayer++;
 		if (currentPlayer == players.size()) currentPlayer = 0;
