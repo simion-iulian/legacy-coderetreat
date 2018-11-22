@@ -42,19 +42,19 @@ public class Game {
 		System.out.println("They have rolled a " + roll);
 		
 		if (inPenaltyBox[currentPlayer]) {
-			if (roll % 2 != 0) {
-				isGettingOutOfPenaltyBox = true;
-                printPlayerPenaltyBoxStatus();
 
+            final boolean oddNumberedRoll = (roll % 2 != 0);
+            isGettingOutOfPenaltyBox = oddNumberedRoll;
+
+		    printPlayerPenaltyBoxStatus();
+
+		    if (isGettingOutOfPenaltyBox) {
                 movePlayersPlace(roll);
 
                 printPlayerLocation();
                 printCurrentCategory();
                 askQuestion();
-			} else {
-                isGettingOutOfPenaltyBox = false;
-                printPlayerPenaltyBoxStatus();
-            }
+			}
 			
 		} else {
 
