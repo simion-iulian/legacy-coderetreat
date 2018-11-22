@@ -72,9 +72,9 @@ public class Game {
     }
 
     private void printPlayerPenaltyBoxStatus() {
+        final String penaltyBoxStatus = isGettingOutOfPenaltyBox ? "" : "not ";
         System.out.println(players.get(currentPlayer) + " is "
-            + (isGettingOutOfPenaltyBox ? "" : "not ") +
-            "getting out of the penalty box");
+            + penaltyBoxStatus + "getting out of the penalty box");
     }
 
     private void printPlayerLocation() {
