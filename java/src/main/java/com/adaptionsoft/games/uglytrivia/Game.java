@@ -26,8 +26,7 @@ public class Game {
 	    players.add(playerName);
 	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
-	    inPenaltyBox[howManyPlayers()] = false;
-	    
+
 	    System.out.println(playerName + " was added");
 	    System.out.println("They are player number " + players.size());
 		return true;
@@ -108,9 +107,10 @@ public class Game {
 						+ " Gold Coins.");
 				
 				boolean winner = didPlayerWin();
-				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
-				
+                currentPlayer++;
+                if (currentPlayer == players.size()) currentPlayer = 0;
+
+
 				return winner;
 			} else {
 				currentPlayer++;
