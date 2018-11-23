@@ -17,7 +17,7 @@ public class PenaltyBox {
     }
 
     public boolean playerCanAnswerQuestion(int roll) {
-        boolean isOdd = (roll%2!=0);
+        boolean isOdd = (roll%2==0);
         return isOdd;
     }
 }

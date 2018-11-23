@@ -30,12 +30,12 @@ public class PenaltyBoxShould {
 
     @ParameterizedTest
     @CsvSource({
-            "1, true",
-            "2, false",
-            "3, true",
-            "4, false",
-            "5, true",
-            "6, false",
+            "1, false",
+            "2, true",
+            "3, false",
+            "4, true",
+            "5, false",
+            "6, true",
     })
     void player_can_answer_question(int roll, boolean expectedAnswer){
         PenaltyBox penaltyBox = new PenaltyBox();
