@@ -8,7 +8,7 @@ public class Game {
     int[] purses  = new int[6];
 
     int currentPlayer = 0;
-    boolean isGettingOutOfPenaltyBox;
+    boolean playerInPenaltyBoxCanAnswerQuestion;
     private final QuestionDeck questionDeck;
     private PenaltyBox penaltyBox;
 
@@ -42,11 +42,11 @@ public class Game {
 		if (penaltyBox.containsPlayer(currentPlayer)) {
 
             final boolean oddNumberedRoll = (roll % 2 != 0);
-            isGettingOutOfPenaltyBox = oddNumberedRoll;
+            playerInPenaltyBoxCanAnswerQuestion = oddNumberedRoll;
 
 		    printPlayerPenaltyBoxStatus();
 
-		    if (isGettingOutOfPenaltyBox) {
+		    if (playerInPenaltyBoxCanAnswerQuestion) {
                 movePlayersPlace(roll);
 
                 printPlayerLocation();
@@ -70,7 +70,7 @@ public class Game {
     }
 
     private void printPlayerPenaltyBoxStatus() {
-        final String penaltyBoxStatus = isGettingOutOfPenaltyBox ? "" : "not ";
+        final String penaltyBoxStatus = playerInPenaltyBoxCanAnswerQuestion ? "" : "not ";
         System.out.println(players.get(currentPlayer) + " is "
             + penaltyBoxStatus + "getting out of the penalty box");
     }
@@ -97,7 +97,7 @@ public class Game {
 
     public boolean wasCorrectlyAnswered() {
 		if (penaltyBox.containsPlayer(currentPlayer)){
-            if (isGettingOutOfPenaltyBox) {
+            if (playerInPenaltyBoxCanAnswerQuestion) {
 				System.out.println("Answer was correct!!!!");
 				purses[currentPlayer]++;
 				System.out.println(players.get(currentPlayer) 
