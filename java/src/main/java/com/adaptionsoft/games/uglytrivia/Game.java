@@ -41,8 +41,7 @@ public class Game {
 		
 		if (penaltyBox.containsPlayer(currentPlayer)) {
 
-            final boolean oddNumberedRoll = (roll % 2 != 0);
-            playerInPenaltyBoxCanAnswerQuestion = oddNumberedRoll;
+			playerInPenaltyBoxCanAnswerQuestion = penaltyBox.playerCanAnswerQuestion(roll);
 
 		    printPlayerPenaltyBoxStatus();
 

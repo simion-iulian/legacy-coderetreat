@@ -1,6 +1,8 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,13 +18,30 @@ public class PenaltyBoxShould {
 
         assertThat(penaltyBox.containsPlayer(1), is(true));
     }
+
     @Test
     void contains_all_players_that_were_put() {
         PenaltyBox penaltyBox = new PenaltyBox();
 
-
         penaltyBox.putPlayer(2);
 
         assertFalse(penaltyBox.containsPlayer(1));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, true",
+            "2, false",
+            "3, true",
+            "4, false",
+            "5, true",
+            "6, false",
+    })
+    void player_can_answer_question(int roll, boolean expectedAnswer){
+        PenaltyBox penaltyBox = new PenaltyBox();
+
+        boolean actualAnswer = penaltyBox.playerCanAnswerQuestion(roll);
+
+        assertThat(actualAnswer, is(expectedAnswer));
     }
 }

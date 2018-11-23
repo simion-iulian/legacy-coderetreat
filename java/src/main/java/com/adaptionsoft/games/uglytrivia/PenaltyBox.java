@@ -15,4 +15,9 @@ public class PenaltyBox {
     public void putPlayer(int player) {
         players.put(player,true);
     }
+
+    public boolean playerCanAnswerQuestion(int roll) {
+        boolean isOdd = (roll%2!=0);
+        return isOdd;
+    }
 }
