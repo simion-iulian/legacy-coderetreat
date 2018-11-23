@@ -20,6 +20,7 @@ public class PenaltyBoxShould {
     void contains_all_players_that_were_put() {
         PenaltyBox penaltyBox = new PenaltyBox();
 
+
         penaltyBox.putPlayer(2);
 
         assertFalse(penaltyBox.containsPlayer(1));
